@@ -1,0 +1,83 @@
+{
+    "name": "spryker-zed",
+    "displayName": "Spryker Zed",
+    "description": "helpers for zed controller",
+    "version": "0.0.1",
+    "publisher": "ctf0",
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "icon": "images/logo.png",
+    "repository": "https://github.com/ctf0/spryker-zed",
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "PHP",
+        "Spryker",
+        "goto",
+        "file navigation"
+    ],
+    "activationEvents": [
+        "onLanguage:php",
+        "onStartupFinished"
+    ],
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Spryker Zed",
+            "properties": {
+                "sprykerZed.showCodeLens": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "show/hide code lenses"
+                },
+                "sprykerZed.appUrl": {
+                    "type": "string",
+                    "default": "https://zed.spryker.local.eu",
+                    "description": "app url"
+                },
+                "sprykerZed.defaultPath": {
+                    "type": "string",
+                    "default": "src/Pyz/Zed",
+                    "markdownDescription": "zed default path"
+                },
+                "sprykerZed.viewDefaultValue": {
+                    "type": "string",
+                    "editPresentation": "multilineText",
+                    "default": "{% extends template(\"widget\") %}\n\n{% block body %}\n\n{% endblock %}",
+                    "markdownDescription": "text to be added for the newly created view"
+                },
+                "sprykerZed.activateViewAfterCreation": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "show/open the newly created view"
+                }
+            }
+        }
+    },
+    "main": "./out/main",
+    "scripts": {
+        "vscode:prepublish": "npm run esbuild-base -- --pure:console.log --minify",
+        "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+        "esbuild": "npm run esbuild-base -- --sourcemap",
+        "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+        "watch": "npm run esbuild",
+        "lint": "eslint --fix src --config=eslint.config.cjs"
+    },
+    "devDependencies": {
+        "@stylistic/eslint-plugin": "^2.12.1",
+        "@types/glob": "^8.1.0",
+        "@types/node": "^22.10.2",
+        "@types/vscode": "^1.90.0",
+        "@typescript-eslint/eslint-plugin": "^8.18.0",
+        "esbuild": "^0.24.0",
+        "eslint": "^9.16.0",
+        "typescript": "^5.7.2"
+    },
+    "dependencies": {
+        "escape-string-regexp": "^5.0.0",
+        "lodash.debounce": "^4.0.8",
+        "php-parser": "^3.2.1"
+    }
+}
